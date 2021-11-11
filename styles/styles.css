@@ -64,6 +64,11 @@ h1{
     font-size:2em;
     text-align:center;
     padding:15px 0;
+    /* applygin border */
+    /* border: black 3px dashed -- always three values, colour, size, style */
+    border-style: dashed;
+    border-color: black;
+    border-width:3px;
 }
 
 h2{
@@ -102,6 +107,12 @@ footer{
     font-size:0.7em;
 }
 
+.clearfix:after{
+        content: "";
+        display: table;
+        clear: both;
+      }
+}
 /***********************************************************
 				    Hamburger Menu
 ***********************************************************/
@@ -145,3 +156,67 @@ nav ul{
     z-index:10;
 }
 
+/***********************************************************
+				    Media Queries
+***********************************************************/
+
+@media screen and (min-width:800px){
+    h1{
+        font-size:3em;
+    }
+
+    /* use the media query to show a different image by hiding the 
+    smaller and showing the larger */
+    img.small{
+        display:none;
+    }
+    img.large{
+        display:inline-block;
+        width:200px;
+        float:left;
+        margin:10px;
+    }
+    
+    /* set a max-width for your site */
+    .container{
+        max-width:1024px;
+        margin:0 auto; /*this will centre the container div once the browser window is 
+        wider than max width*/
+    }
+
+    /* make the main and sidebar sections sit next to each other */
+    main{
+        /* width:calc(70% - 40px); */
+        width:70%;
+        box-sizing:border-box; /*accounts for the padding in the width*/
+        float:left;
+    }
+
+    aside{
+        width:calc(30% - 40px);
+        float:right;
+    }
+
+    footer{
+        clear:both; /*make the footer see the floated elements and go below it*/
+    }
+
+    /* hide the hamburger button and turn the menu into a normal menu*/
+    .hamburger{
+        display:none;
+    }
+
+    nav ul{
+        display:block;
+    }
+
+    #menuchecker:checked + ul{
+        /* in case the menu is open when the site is resized, override the position on the menu */
+        position:static;
+    }
+
+    nav ul li{
+        float:left;
+        margin:20px 10px 0; /*three values: top / left-right/ bottom */
+    }
+}
